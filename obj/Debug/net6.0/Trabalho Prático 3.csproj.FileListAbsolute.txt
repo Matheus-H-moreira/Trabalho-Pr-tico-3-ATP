@@ -1,0 +1,15 @@
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\bin\Debug\net6.0\Trabalho Prático 3.exe
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\bin\Debug\net6.0\Trabalho Prático 3.deps.json
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\bin\Debug\net6.0\Trabalho Prático 3.runtimeconfig.json
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\bin\Debug\net6.0\Trabalho Prático 3.dll
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\bin\Debug\net6.0\Trabalho Prático 3.pdb
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\obj\Debug\net6.0\Trabalho Prático 3.csproj.AssemblyReference.cache
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\obj\Debug\net6.0\Trabalho Prático 3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\obj\Debug\net6.0\Trabalho Prático 3.AssemblyInfoInputs.cache
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\obj\Debug\net6.0\Trabalho Prático 3.AssemblyInfo.cs
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\obj\Debug\net6.0\Trabalho Prático 3.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\obj\Debug\net6.0\Trabalho Prático 3.dll
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\obj\Debug\net6.0\refint\Trabalho Prático 3.dll
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\obj\Debug\net6.0\Trabalho Prático 3.pdb
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\obj\Debug\net6.0\Trabalho Prático 3.genruntimeconfig.cache
+C:\Users\Usuario\OneDrive - sga.pucminas.br\Algoritmos e Técnicas de Programação\Trabalho Prático 3\obj\Debug\net6.0\ref\Trabalho Prático 3.dll
