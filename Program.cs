@@ -90,5 +90,11 @@
         ConfigVetor(ref nomePrioritario, ref idadePrioritario, ref numIngressoPrioritario);
         ConfigVetor(ref nomeVIP, ref idadeVIP, ref numIngressoVIP);
 
+        EntradaEspectador(
+            ref contadorComum, ref nomeComum, ref idadeComum, ref numIngressoComum,
+            ref contadorPrioritario, ref nomePrioritario, ref idadePrioritario, ref numIngressoPrioritario,
+            ref contadorVIP, ref nomeVIP, ref idadeVIP, ref numIngressoVIP
+        );
+
     }
 }
