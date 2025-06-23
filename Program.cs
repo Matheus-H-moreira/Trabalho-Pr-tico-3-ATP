@@ -164,6 +164,51 @@
         System.Console.WriteLine("Saída realizada com sucesso! [Aperte Enter]");
         Console.ReadLine();
     }
+    static void ConsultarIngressos(int comum, int prioritario, int vip, int contadorComum, int contadorPrioritario, int contadorVIP)
+    {
+        while (true)
+        {
+            Console.Clear();
+            System.Console.WriteLine("----------MENU----------");
+            System.Console.WriteLine("1. Ingresso Comum");
+            System.Console.WriteLine("2. Ingresso Prioritário");
+            System.Console.WriteLine("3. Ingresso VIP");
+            System.Console.WriteLine("4. Sair");
+            System.Console.WriteLine("------------------------");
+            int opcao = int.Parse(Console.ReadLine());
+
+            switch (opcao)
+            {
+                case 1:
+                    System.Console.WriteLine($"Existem {comum - contadorComum} ingressos [categoria comum] disponíveis  ");
+                    System.Console.WriteLine("Aperte Enter");
+                    Console.ReadLine();
+                    break;
+
+                case 2:
+                    System.Console.WriteLine($"Existem {prioritario - contadorPrioritario} ingressos [categoria prioritária] disponíveis");
+                    System.Console.WriteLine("Aperte Enter");
+                    Console.ReadLine();
+                    break;
+
+                case 3:
+                    System.Console.WriteLine($"Existem {vip - contadorVIP} ingressos [categoria VIP] disponíveis");
+                    System.Console.WriteLine("Aperte Enter");
+                    Console.ReadLine();
+                    break;
+
+                case 4:
+                    System.Console.WriteLine("Saindo[Aperte Enter]");
+                    Console.ReadLine();
+                    return;
+
+                default:
+                    System.Console.WriteLine("Opcão inválida[Aperte Enter]");
+                    Console.ReadLine();
+                    break;
+            }
+        }
+    }
     static void Main()
     {
         const int ingressoComum = 50, ingressoPrioritario = 30, ingressoVIP = 20;
@@ -176,25 +221,33 @@
         ConfigVetor(ref nomePrioritario, ref idadePrioritario, ref numIngressoPrioritario);
         ConfigVetor(ref nomeVIP, ref idadeVIP, ref numIngressoVIP);
 
-        System.Console.WriteLine("----------MENU----------");
-        System.Console.WriteLine("1. Entrada de espectador");
-        System.Console.WriteLine("2. Saída de espectador");
-        System.Console.WriteLine("3. Consultar ingressos disponíveis");
-        System.Console.WriteLine("4. Exibir resumo do evento");
-        System.Console.WriteLine("5. Listar todos os espectadores");
-        System.Console.WriteLine("6. Sair");
-        System.Console.WriteLine("------------------------");
-        int opcao = int.Parse(Console.ReadLine());
-
-        switch (opcao)
+        while (true)
         {
-            case 1:
-                EntradaEspectador(ref contadorComum, ref nomeComum, ref idadeComum, ref numIngressoComum, ref contadorPrioritario, ref nomePrioritario, ref idadePrioritario, ref numIngressoPrioritario, ref contadorVIP, ref nomeVIP, ref idadeVIP, ref numIngressoVIP);
-                break;
+            Console.Clear();
+            System.Console.WriteLine("----------MENU----------");
+            System.Console.WriteLine("1. Entrada de espectador");
+            System.Console.WriteLine("2. Saída de espectador");
+            System.Console.WriteLine("3. Consultar ingressos disponíveis");
+            System.Console.WriteLine("4. Exibir resumo do evento");
+            System.Console.WriteLine("5. Listar todos os espectadores");
+            System.Console.WriteLine("6. Sair");
+            System.Console.WriteLine("------------------------");
+            int opcao = int.Parse(Console.ReadLine());
 
-            case 2:
-                SaidaEspectador(ref contadorComum, ref nomeComum, ref idadeComum, ref numIngressoComum, ref contadorPrioritario, ref nomePrioritario, ref idadePrioritario, ref numIngressoPrioritario, ref contadorVIP, ref nomeVIP, ref idadeVIP, ref numIngressoVIP);
-                break;
+            switch (opcao)
+            {
+                case 1:
+                    EntradaEspectador(ref contadorComum, ref nomeComum, ref idadeComum, ref numIngressoComum, ref contadorPrioritario, ref nomePrioritario, ref idadePrioritario, ref numIngressoPrioritario, ref contadorVIP, ref nomeVIP, ref idadeVIP, ref numIngressoVIP);
+                    break;
+
+                case 2:
+                    SaidaEspectador(ref contadorComum, ref nomeComum, ref idadeComum, ref numIngressoComum, ref contadorPrioritario, ref nomePrioritario, ref idadePrioritario, ref numIngressoPrioritario, ref contadorVIP, ref nomeVIP, ref idadeVIP, ref numIngressoVIP);
+                    break;
+
+                case 3:
+                    ConsultarIngressos(ingressoComum, ingressoPrioritario, ingressoVIP, contadorComum, contadorPrioritario, contadorVIP);
+                    break;
+            }
         }
     }
 }
