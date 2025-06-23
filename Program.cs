@@ -209,6 +209,56 @@
             }
         }
     }
+    static void OpcaoResumo(int ingressoComum, int ingressoPrioritario, int ingressoVIP, int contadorComum, int contadorPrioritario, int contadorVIP)
+    {
+        int totalPresente = contadorComum + contadorPrioritario + contadorVIP;
+        while (true)
+        {
+            Console.Clear();
+            System.Console.WriteLine("----------MENU----------");
+            System.Console.WriteLine("1. Ingresso Comum");
+            System.Console.WriteLine("2. Ingresso Prioritário");
+            System.Console.WriteLine("3. Ingresso VIP");
+            System.Console.WriteLine("4. Sair");
+            System.Console.WriteLine("------------------------");
+            int opcao = int.Parse(Console.ReadLine());
+
+            switch (opcao)
+            {
+                case 1:
+                    Resumo(ingressoComum, contadorComum, totalPresente);
+                    break;
+
+                case 2:
+                    Resumo(ingressoPrioritario, contadorPrioritario, totalPresente);
+                    break;
+
+                case 3:
+                    Resumo(ingressoVIP, contadorVIP, totalPresente);
+                    break;
+
+                case 4:
+                    System.Console.WriteLine("Saindo[Aperte Enter]");
+                    Console.ReadLine();
+                    return;
+
+                default:
+                    System.Console.WriteLine("Opcão inválida[Aperte Enter]");
+                    Console.ReadLine();
+                    break;
+            }
+        }
+    }
+    static void Resumo(int quantidadeIngressosTotal, int contadorIngressos, int totalPresente)
+    {
+        double percentual = (contadorIngressos * 100.0) / totalPresente;
+        Console.Clear();
+        System.Console.WriteLine($"Número total de espectadores presentes no evento: {totalPresente}");
+        System.Console.WriteLine($"Percentual para essa categoria: {percentual:F2}%");
+        System.Console.WriteLine($"Ingressos disponíveis para essa categoria: {quantidadeIngressosTotal - contadorIngressos}");
+        System.Console.WriteLine("Aperte Enter");
+        Console.ReadLine();
+    }
     static void Main()
     {
         const int ingressoComum = 50, ingressoPrioritario = 30, ingressoVIP = 20;
@@ -246,6 +296,10 @@
 
                 case 3:
                     ConsultarIngressos(ingressoComum, ingressoPrioritario, ingressoVIP, contadorComum, contadorPrioritario, contadorVIP);
+                    break;
+
+                case 4:
+                    OpcaoResumo(ingressoComum, ingressoPrioritario, ingressoVIP, contadorComum, contadorPrioritario, contadorVIP);
                     break;
             }
         }
