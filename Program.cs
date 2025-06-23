@@ -53,7 +53,7 @@
     {
         int posicaoIngresso = 0;
 
-        if (i > nomes.Length)
+        if (i >= nomes.Length)
         {
             System.Console.WriteLine("Limite de ingressos atingidos");
             return;
@@ -259,6 +259,60 @@
         System.Console.WriteLine("Aperte Enter");
         Console.ReadLine();
     }
+    static void Espectadores(string[] nomeComum, string[] nomePrioritario, string[] nomeVIP, int[] idadeComum, int[] idadePrioritario, int[] idadeVIP, int[] numIngressoComum, int[] numIngressoPrioritario, int[] numIngressoVIP)
+    {
+        while (true)
+        {
+            Console.Clear();
+            System.Console.WriteLine("----------MENU----------");
+            System.Console.WriteLine("1. Ingresso Comum");
+            System.Console.WriteLine("2. Ingresso Prioritário");
+            System.Console.WriteLine("3. Ingresso VIP");
+            System.Console.WriteLine("4. Sair");
+            System.Console.WriteLine("------------------------");
+            int opcao = int.Parse(Console.ReadLine());
+
+            switch (opcao)
+            {
+                case 1:
+                    MostrarEspectadores(nomeComum, idadeComum, numIngressoComum);
+                    break;
+
+                case 2:
+                    MostrarEspectadores(nomePrioritario, idadePrioritario, numIngressoPrioritario);
+                    break;
+
+                case 3:
+                    MostrarEspectadores(nomeVIP, idadeVIP, numIngressoVIP);
+                    break;
+
+                case 4:
+                    System.Console.WriteLine("Saindo[Aperte Enter]");
+                    Console.ReadLine();
+                    return;
+
+                default:
+                    System.Console.WriteLine("Opcão inválida[Aperte Enter]");
+                    Console.ReadLine();
+                    break;
+            }
+        }
+    }
+    static void MostrarEspectadores(string[] nome, int[] idade, int[] numIngresso)
+    {
+        System.Console.WriteLine("Lista dos espectadores:\n");
+        for (int i = 0; i < nome.Length; i++)
+        {
+            if (!string.IsNullOrEmpty(nome[i]))
+            {
+                System.Console.Write($"Nome: {nome[i]} | Idade: {idade[i]} | Número do ingresso: {numIngresso[i]}");
+            }
+            System.Console.WriteLine();
+        }
+
+        System.Console.WriteLine("Aperte Enter");
+        Console.ReadLine();
+    }
     static void Main()
     {
         const int ingressoComum = 50, ingressoPrioritario = 30, ingressoVIP = 20;
@@ -300,6 +354,20 @@
 
                 case 4:
                     OpcaoResumo(ingressoComum, ingressoPrioritario, ingressoVIP, contadorComum, contadorPrioritario, contadorVIP);
+                    break;
+
+                case 5:
+                    Espectadores(nomeComum, nomePrioritario, nomeVIP, idadeComum, idadePrioritario, idadeVIP, numIngressoComum, numIngressoPrioritario, numIngressoVIP);
+                    break;
+
+                case 6:
+                    Console.WriteLine("Encerrando o programa... [Aperte Enter]");
+                    Console.ReadLine();
+                    return;
+
+                default:
+                    System.Console.WriteLine("Opção inválida [Aperte Enter]");
+                    Console.ReadLine();
                     break;
             }
         }
