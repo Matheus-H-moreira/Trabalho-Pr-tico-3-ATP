@@ -1,9 +1,11 @@
 ﻿class Program
 {
     const int MAX_INGRESSOS = 100;
-    const int MAX_COMUM = 50;
-    const int MAX_PRIORITARIO = 30;
-    const int MAX_VIP = 20;
+
+    static string nomeCidade = "";
+    static int MAX_COMUM = 0;
+    static int MAX_PRIORITARIO = 0;
+    static int MAX_VIP = 0;
 
     static string[] nomes = new string[MAX_INGRESSOS];
     static int[] idades = new int[MAX_INGRESSOS];
@@ -21,6 +23,7 @@
 
     static void Main()
     {
+        CarregarDadosIniciais(out nomeCidade, out MAX_VIP, out MAX_PRIORITARIO, out MAX_COMUM);
         int opcao;
 
         do
@@ -60,14 +63,14 @@
     static int Menu()
     {
         Console.Clear();
-        Console.WriteLine("----------MENU----------");
+        Console.WriteLine("----- EVENTO EM " + nomeCidade.ToUpper() + " -----");
         Console.WriteLine("1. Registrar entrada");
         Console.WriteLine("2. Registrar saída");
         Console.WriteLine("3. Consultar ingressos disponíveis");
         Console.WriteLine("4. Exibir resumo");
         Console.WriteLine("5. Listar todos os espectadores");
         Console.WriteLine("6. Sair");
-        Console.WriteLine("------------------------");
+        Console.WriteLine("-------------------------------");
         Console.Write("Escolha uma opção: ");
         return int.Parse(Console.ReadLine());
     }
@@ -167,15 +170,7 @@
             }
         }
 
-        if (encontrado)
-        {
-            Console.WriteLine("Saída registrada com sucesso! [Aperte Enter]");
-        }
-        else
-        {
-            Console.WriteLine("Ingresso não encontrado. [Aperte Enter]");
-        }
-
+        Console.WriteLine(encontrado ? "Saída registrada com sucesso! [Aperte Enter]" : "Ingresso não encontrado. [Aperte Enter]");
         Console.ReadLine();
     }
 
@@ -190,17 +185,23 @@
             else if (tipos[i] == "comum") comUsados++;
         }
 
-        Console.WriteLine($"Ingressos disponíveis:");
-        Console.WriteLine($"VIP: {vip - vipUsados}");
-        Console.WriteLine($"Prioritário: {prioritario - priUsados}");
-        Console.WriteLine($"Comum: {comum - comUsados}");
-        Console.WriteLine("Aperte Enter");
+        string saida = $"Cidade: {nomeCidade}\n";
+        saida += "Ingressos disponíveis:\n";
+        saida += $"VIP: {vip - vipUsados}\n";
+        saida += $"Prioritário: {prioritario - priUsados}\n";
+        saida += $"Comum: {comum - comUsados}";
+
+        Console.WriteLine(saida);
+        EscreverSaida(saida);
+
+        Console.WriteLine("\nAperte Enter");
         Console.ReadLine();
     }
 
     static void ExibirResumo()
     {
         int vip = 0, pri = 0, com = 0;
+
         for (int i = 0; i < totalEntradas; i++)
         {
             if (!string.IsNullOrEmpty(tipos[i]))
@@ -213,13 +214,15 @@
 
         int totalPresentes = vip + pri + com;
 
+        string resumo = $"Cidade: {nomeCidade}\n";
+        resumo += $"Total de espectadores: {totalPresentes}\n";
+        resumo += $"VIP: {vip} ({(totalPresentes > 0 ? (vip * 100.0 / totalPresentes) : 0):F2}%) | {MAX_VIP - vip} ingressos disponíveis\n";
+        resumo += $"Prioritario: {pri} ({(totalPresentes > 0 ? (pri * 100.0 / totalPresentes) : 0):F2}%) | {MAX_PRIORITARIO - pri} ingressos disponíveis\n";
+        resumo += $"Comum: {com} ({(totalPresentes > 0 ? (com * 100.0 / totalPresentes) : 0):F2}%) | {MAX_COMUM - com} ingressos disponíveis";
+
         Console.Clear();
         Console.WriteLine("===== RESUMO DO EVENTO =====");
-        Console.WriteLine($"Total de espectadores presentes: {totalPresentes}");
-
-        Console.WriteLine($"VIP: {vip} ({(totalPresentes > 0 ? (vip * 100.0 / totalPresentes) : 0):F2}%) | Disponíveis: {MAX_VIP - vip}");
-        Console.WriteLine($"Prioritário: {pri} ({(totalPresentes > 0 ? (pri * 100.0 / totalPresentes) : 0):F2}%) | Disponíveis: {MAX_PRIORITARIO - pri}");
-        Console.WriteLine($"Comum: {com} ({(totalPresentes > 0 ? (com * 100.0 / totalPresentes) : 0):F2}%) | Disponíveis: {MAX_COMUM - com}");
+        Console.WriteLine(resumo);
 
         if (!string.IsNullOrEmpty(ultimoNomeEntrada))
         {
@@ -232,6 +235,8 @@
             Console.WriteLine($"\nÚltimo espectador que saiu:");
             Console.WriteLine($"Nome: {ultimoNomeSaida} | Idade: {ultimaIdadeSaida} | Nº Ingresso: {ultimoNumSaida} | Tipo: {ultimoTipoSaida}");
         }
+
+        EscreverSaida(resumo);
 
         Console.WriteLine("\nAperte Enter");
         Console.ReadLine();
@@ -266,5 +271,19 @@
 
         Console.WriteLine("\nAperte Enter");
         Console.ReadLine();
+    }
+
+    static void CarregarDadosIniciais(out string cidade, out int vip, out int prioritario, out int comum)
+    {
+        string[] linhas = File.ReadAllLines("show_in.txt");
+        cidade = linhas[0];
+        vip = int.Parse(linhas[1]);
+        prioritario = int.Parse(linhas[2]);
+        comum = int.Parse(linhas[3]);
+    }
+
+    static void EscreverSaida(string conteudo)
+    {
+        File.WriteAllText("show_out.txt", conteudo);
     }
 }
