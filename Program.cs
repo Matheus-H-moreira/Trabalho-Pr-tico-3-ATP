@@ -59,7 +59,6 @@
 
         } while (opcao != 6);
     }
-
     static int Menu()
     {
         Console.Clear();
@@ -74,7 +73,6 @@
         Console.Write("Escolha uma opção: ");
         return int.Parse(Console.ReadLine());
     }
-
     static void RegistrarEntrada(string[] nomes, int[] idades, int[] numerosIngresso, string[] tipos)
     {
         if (totalEntradas >= MAX_INGRESSOS)
@@ -142,7 +140,6 @@
         Console.WriteLine("Entrada registrada com sucesso! [Aperte Enter]");
         Console.ReadLine();
     }
-
     static void RegistrarSaida(string[] nomes, int[] idades, int[] numerosIngresso, string[] tipos)
     {
         Console.Write("Número do ingresso (4 dígitos): ");
@@ -173,16 +170,24 @@
         Console.WriteLine(encontrado ? "Saída registrada com sucesso! [Aperte Enter]" : "Ingresso não encontrado. [Aperte Enter]");
         Console.ReadLine();
     }
-
     static void ConsultarIngressos(int vip, int prioritario, int comum)
     {
         int vipUsados = 0, priUsados = 0, comUsados = 0;
 
         for (int i = 0; i < totalEntradas; i++)
         {
-            if (tipos[i] == "vip") vipUsados++;
-            else if (tipos[i] == "prioritario") priUsados++;
-            else if (tipos[i] == "comum") comUsados++;
+            if (tipos[i] == "vip")
+            {
+                vipUsados++;
+            }
+            else if (tipos[i] == "prioritario")
+            {
+                priUsados++;
+            }
+            else if (tipos[i] == "comum")
+            {
+                comUsados++;
+            }
         }
 
         string saida = $"Cidade: {nomeCidade}\n";
@@ -197,7 +202,6 @@
         Console.WriteLine("\nAperte Enter");
         Console.ReadLine();
     }
-
     static void ExibirResumo()
     {
         int vip = 0, pri = 0, com = 0;
@@ -241,7 +245,6 @@
         Console.WriteLine("\nAperte Enter");
         Console.ReadLine();
     }
-
     static void ListarEspectadores()
     {
         Console.Clear();
@@ -272,7 +275,6 @@
         Console.WriteLine("\nAperte Enter");
         Console.ReadLine();
     }
-
     static void CarregarDadosIniciais(out string cidade, out int vip, out int prioritario, out int comum)
     {
         string[] linhas = File.ReadAllLines("show_in.txt");
@@ -281,7 +283,6 @@
         prioritario = int.Parse(linhas[2]);
         comum = int.Parse(linhas[3]);
     }
-
     static void EscreverSaida(string conteudo)
     {
         File.WriteAllText("show_out.txt", conteudo);
